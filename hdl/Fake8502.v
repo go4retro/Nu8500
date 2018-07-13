@@ -71,12 +71,12 @@ begin
    else if (aec & ce_0000 & clock & r_w_6502) // read PIO
    begin
       data_8502_out = 8'bz;
-      data_6502_out = {pio[6:5],'b0,pio[4:0]};
+      data_6502_out = {'b0, pio[6:0]};
    end
    else if (aec & ce_0001 & clock & r_w_6502) // read ddr
    begin
       data_8502_out = 8'bz;
-      data_6502_out = {ddr_pio[6:5],'b0,ddr_pio[4:0]};
+      data_6502_out = {'b0, ddr_pio[6:0]};
    end
    else
    begin
@@ -94,11 +94,11 @@ begin
    end
    else if(!r_w_6502 & ce_0000)
    begin
-      data_pio <= {data_6502[7:6],data_6502[4:0]};
+      data_pio <= {data_6502[6:0]};
    end
    else if(!r_w_6502 & ce_0001)
    begin
-      ddr_pio <= {data_6502[7:6],data_6502[4:0]};
+      ddr_pio <= {data_6502[6:0]};
    end
 end
 
