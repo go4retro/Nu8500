@@ -27,8 +27,6 @@ module Fake8502(input _reset,
                 inout [7:0]data_6502,
                 inout [7:0]data_8502,
                 input aec,
-                output _rdy_6502,
-                input _rdy_8502,
                 inout [6:0]pio
                );
 wire ce_pio;
@@ -43,11 +41,10 @@ assign ce_pio =            (address_6502[15:1] == 0);
 assign ce_0000 =           ce_pio & !address_6502[0];
 assign ce_0001 =           ce_pio & address_6502[0];
 
-assign address_8502 =      (aec ? address_6502 : 16'bz);
+assign address_8502 =      (aec & clock ? address_6502 : 16'bz);
+assign r_w_8502 =          (aec & clock ? r_w_6502 : 'bz);
 assign data_6502 =         data_6502_out;
 assign data_8502 =         data_8502_out;
-assign r_w_8502 =          (aec ? r_w_6502 : 'bz);
-assign _rdy_6502 =         _rdy_8502;
 assign pio[6] =            (ddr_pio[6] ? data_pio[6] : 'bz);
 assign pio[5] =            (ddr_pio[5] ? data_pio[5] : 'bz);
 assign pio[4] =            (ddr_pio[4] ? data_pio[4] : 'bz);
@@ -94,11 +91,11 @@ begin
    end
    else if(!r_w_6502 & ce_0000)
    begin
-      data_pio <= {data_6502[6:0]};
+      ddr_pio <= {data_6502[6:0]};
    end
    else if(!r_w_6502 & ce_0001)
    begin
-      ddr_pio <= {data_6502[6:0]};
+      data_pio <= {data_6502[6:0]};
    end
 end
 

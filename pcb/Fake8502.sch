@@ -6156,9 +6156,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="+3V14" library="supply1" deviceset="+3V3" device=""/>
 <part name="IC1" library="commodore" deviceset="W65C02SP" device="-R" value="W65C02SP"/>
 <part name="SJ1" library="jumper" deviceset="SJ" device=""/>
+<part name="SUPPLY4" library="supply2" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
+<description>CPU</description>
 <plain>
 </plain>
 <instances>
@@ -6177,6 +6179,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="IC1" gate="A" x="203.2" y="93.98"/>
 <instance part="IC1" gate="P" x="12.7" y="20.32"/>
 <instance part="SJ1" gate="1" x="220.98" y="43.18" rot="R90"/>
+<instance part="SUPPLY4" gate="G$1" x="182.88" y="152.4"/>
 </instances>
 <busses>
 <bus name="R/!W',A'[0..15],D'[0..7]">
@@ -6662,6 +6665,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="170.18" y1="223.52" x2="187.96" y2="223.52" width="0.1524" layer="91"/>
 <label x="170.18" y="223.52" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<wire x1="170.18" y1="111.76" x2="187.96" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="A" pin="BE"/>
+<label x="170.18" y="111.76" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="P0" class="0">
 <segment>
@@ -6730,6 +6738,12 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="12.7" y1="33.02" x2="12.7" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="P" pin="VCC"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="A" pin="!SO"/>
+<wire x1="187.96" y1="132.08" x2="182.88" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="132.08" x2="182.88" y2="149.86" width="0.1524" layer="91"/>
+<pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -6759,6 +6773,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </nets>
 </sheet>
 <sheet>
+<description>LOGIC</description>
 <plain>
 </plain>
 <instances>
@@ -7305,7 +7320,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <wire x1="254" y1="187.96" x2="251.46" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="251.46" y1="190.5" x2="238.76" y2="190.5" width="0.1524" layer="91"/>
-<label x="251.46" y="190.5" size="1.778" layer="95" rot="R180"/>
+<label x="251.46" y="190.5" size="1.778" layer="95" rot="MR0"/>
 <pinref part="IC3" gate="G$1" pin="FB4MC11"/>
 </segment>
 </net>
@@ -7313,7 +7328,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <wire x1="259.08" y1="177.8" x2="256.54" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="256.54" y1="180.34" x2="238.76" y2="180.34" width="0.1524" layer="91"/>
-<label x="251.46" y="180.34" size="1.778" layer="95" rot="R180"/>
+<label x="251.46" y="180.34" size="1.778" layer="95" rot="MR0"/>
 <pinref part="IC3" gate="G$1" pin="FB4MC4"/>
 </segment>
 </net>
@@ -7321,7 +7336,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <wire x1="254" y1="172.72" x2="251.46" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="251.46" y1="175.26" x2="238.76" y2="175.26" width="0.1524" layer="91"/>
-<label x="251.46" y="175.26" size="1.778" layer="95" rot="R180"/>
+<label x="251.46" y="175.26" size="1.778" layer="95" rot="MR0"/>
 <pinref part="IC3" gate="G$1" pin="FB4MC3"/>
 </segment>
 </net>
@@ -7330,6 +7345,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="IC3" gate="G$1" pin="FB1MC12"/>
 <wire x1="124.46" y1="38.1" x2="127" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="127" y1="40.64" x2="127" y2="50.8" width="0.1524" layer="91"/>
+<label x="127" y="40.64" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="A5" class="0">
@@ -7471,6 +7487,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </nets>
 </sheet>
 <sheet>
+<description>POWER</description>
 <plain>
 </plain>
 <instances>
@@ -7531,70 +7548,37 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </sheet>
 </sheets>
 <errors>
-<approved hash="102,2,78.74,93.98,21GND,GND,,,,"/>
-<approved hash="102,2,129.54,50.8,31GND,GND,,,,"/>
-<approved hash="102,2,195.58,50.8,44GND,GND,,,,"/>
-<approved hash="102,2,251.46,129.54,62GND,GND,,,,"/>
-<approved hash="102,2,251.46,165.1,69GND,GND,,,,"/>
-<approved hash="102,2,251.46,195.58,75GND,GND,,,,"/>
-<approved hash="102,2,185.42,220.98,84GND,GND,,,,"/>
-<approved hash="102,2,104.14,220.98,100GND,GND,,,,"/>
-<approved hash="104,1,-17.78,147.32,IC1P,VSS,GND,,,"/>
-<approved hash="104,1,-10.16,147.32,IC2P,VSS,GND,,,"/>
-<approved hash="104,2,78.74,175.26,IC3,5VCCINT3\,3V,+3V3,,,"/>
-<approved hash="104,2,104.14,50.8,IC3,26VCCIO2\,5V/3\,3V,+3V3,,,"/>
-<approved hash="104,2,165.1,50.8,IC3,38VCCIO2\,5V/3\,3V,+3V3,,,"/>
-<approved hash="104,2,251.46,73.66,IC3,51VCCIO2\,5V/3\,3V,+3V3,,,"/>
-<approved hash="104,2,251.46,104.14,IC3,57VCCINT3\,3V,+3V3,,,"/>
-<approved hash="104,2,165.1,220.98,IC3,88VCCIO2\,5V/3\,3V,+3V3,,,"/>
-<approved hash="209,1,86.36,279.4,!RESET',,,,,"/>
+<approved hash="104,2,66.04,175.26,IC3,VCCINT3\,3V,+3V3,,,"/>
+<approved hash="104,2,91.44,50.8,IC3,VCCIO2\,5V/3\,3V,+3V3,,,"/>
+<approved hash="104,2,152.4,50.8,IC3,VCCIO2\,5V/3\,3V,+3V3,,,"/>
+<approved hash="104,2,238.76,73.66,IC3,VCCIO2\,5V/3\,3V,+3V3,,,"/>
+<approved hash="104,2,238.76,104.14,IC3,VCCINT3\,3V,+3V3,,,"/>
+<approved hash="104,2,152.4,220.98,IC3,VCCIO2\,5V/3\,3V,+3V3,,,"/>
+<approved hash="104,2,101.6,220.98,IC3,VCCINT3\,3V,+3V3,,,"/>
 <approved hash="206,3,27.94,25.4,+3V3,,,,,"/>
 <approved hash="206,3,27.94,22.86,+3V3,,,,,"/>
 <approved hash="208,2,7.62,33.02,+3V3,sup,,,,"/>
 <approved hash="208,2,12.7,33.02,+3V3,sup,,,,"/>
 <approved hash="208,2,17.78,33.02,+3V3,sup,,,,"/>
 <approved hash="208,2,22.86,33.02,+3V3,sup,,,,"/>
-<approved hash="208,2,73.66,256.54,+3V3,sup,,,,"/>
-<approved hash="208,2,256.54,256.54,+3V3,sup,,,,"/>
-<approved hash="208,2,165.1,256.54,+3V3,sup,,,,"/>
-<approved hash="208,2,114.3,256.54,+3V3,sup,,,,"/>
+<approved hash="208,2,101.6,264.16,+3V3,sup,,,,"/>
+<approved hash="208,2,152.4,264.16,+3V3,sup,,,,"/>
+<approved hash="208,2,60.96,264.16,+3V3,sup,,,,"/>
+<approved hash="208,2,243.84,264.16,+3V3,sup,,,,"/>
 <approved hash="208,3,30.48,27.94,+3V3,sup,,,,"/>
 <approved hash="208,3,27.94,25.4,+3V3,out,,,,"/>
 <approved hash="208,3,27.94,22.86,+3V3,out,,,,"/>
-<approved hash="208,3,121.92,88.9,+3V3,sup,,,,"/>
-<approved hash="208,3,149.86,78.74,+3V3,sup,,,,"/>
-<approved hash="206,1,116.84,299.72,AVMA,,,,,"/>
-<approved hash="206,1,116.84,205.74,AVMA,,,,,"/>
-<approved hash="206,1,116.84,294.64,BA,,,,,"/>
-<approved hash="206,1,116.84,200.66,BA,,,,,"/>
-<approved hash="206,1,116.84,292.1,BS,,,,,"/>
-<approved hash="206,1,116.84,198.12,BS,,,,,"/>
-<approved hash="206,1,116.84,297.18,BUSY,,,,,"/>
-<approved hash="206,1,116.84,203.2,BUSY,,,,,"/>
-<approved hash="209,1,86.36,274.32,E',,,,,"/>
-<approved hash="206,1,116.84,302.26,LIC,,,,,"/>
-<approved hash="206,1,116.84,208.28,LIC,,,,,"/>
-<approved hash="209,1,86.36,269.24,Q',,,,,"/>
 <approved hash="113,2,10.5274,21.59,C3.1,,,,,"/>
 <approved hash="113,2,15.6074,21.59,C3.2,,,,,"/>
 <approved hash="113,2,20.6874,21.59,C3.3,,,,,"/>
 <approved hash="113,2,25.3581,21.59,C34,,,,,"/>
-<approved hash="113,2,281.94,89.8948,R1,,,,,"/>
-<approved hash="113,2,293.779,64.77,C1,,,,,"/>
-<approved hash="113,1,171.346,266.596,FRAME2,,,,,"/>
+<approved hash="113,1,194.206,131.976,FRAME2,,,,,"/>
 <approved hash="113,2,215.796,139.596,FRAME1,,,,,"/>
 <approved hash="113,3,139.596,107.846,FRAME3,,,,,"/>
 <approved hash="113,3,20.32,20.8026,VR1,,,,,"/>
 <approved hash="113,3,11.268,19.05,C2,,,,,"/>
 <approved hash="113,3,31.588,16.51,C3,,,,,"/>
-<approved hash="113,3,120.925,81.28,R2,,,,,"/>
-<approved hash="113,3,86.5016,73.2705,BANK,,,,,"/>
-<approved hash="113,3,129.597,70.7305,!DISABLE,,,,,"/>
-<approved hash="113,3,154.191,72.39,LED1,,,,,"/>
-<approved hash="113,3,148.865,60.96,R3,,,,,"/>
-<approved hash="113,3,153.945,60.96,R4,,,,,"/>
-<approved hash="113,3,159.025,60.96,R5,,,,,"/>
-<approved hash="115,2,264.16,88.9,!RESET_DEL,,,,,"/>
+<approved hash="113,1,219.464,43.18,SJ1,,,,,"/>
 </errors>
 </schematic>
 </drawing>
