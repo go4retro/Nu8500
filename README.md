@@ -1,5 +1,5 @@
-# 8502 to 6502 Adapter Schematic and Printed Circuit Board
-This PCB will allow a 65(c)02 CPU to emulate a CSG/MOS 8502 CPU.
+# 6510/8500 to 6502 Adapter Schematic and Printed Circuit Board
+This PCB will allow a 65(c)02 CPU to emulate a CSG/MOS 6510/8500 CPU.
 
 ## Theory
 The 6502 address, data, and r/w lines are fed through the CPLD so they cna be optionally tri-stated, and the on-board PIO port lines 0-6 are emulated.
